@@ -1,24 +1,19 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from config import config
+# from .main import api
+# from .main.controller import EmployeeList, Employee
+from flask import Blueprint
+from flask_restplus import Api
+from .main.controller import employee_ns, face_ns, train_ns
 
-db = SQLAlchemy()
+# api.add_resource(EmployeeList, '/employee/')
+# api.add_resource(Employee, '/employee/<string:id>', endpoint='<string:id>')
 
+blueprint = Blueprint('api', __name__, url_prefix='/api')
 
-def create_app(config_name):
-    """
-    Create app
-    :param config_name: configuration mode
-    """
-    # Create app
-    app = Flask(__name__)
-    app.config.from_object(config[config_name])
-    config[config_name].init_server(app)
-
-    db.init_app(app)
-
-    # Register API blueprint
-    from .api import api as api_blueprint
-    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
-
-    return app
+api = Api(blueprint,
+          title='Lac Viet Face Recognition API',
+          description='',
+          version='1.0.0',
+          doc='/docs/')
+api.add_namespace(employee_ns, path='/employee')
+api.add_namespace(face_ns, path='/face')
+api.add_namespace(train_ns, path='/train')

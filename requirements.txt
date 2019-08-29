@@ -1,0 +1,13 @@
+tqdm
+pandas
+apispec>=2.0.2
+marshmallow>=2.19.5
+werkzeug>=0.15.5
+Flasgger>=0.9.3
+Flask>=1.1.1
+Flask-Bcrypt>=0.7.1
+Flask-Migrate>=2.5.2
+Flask-Restful>=0.3.7
+Flask-Script>=2.0.6
+Flask-SQLAlchemy>=2.4.0
+Flask-Testing>=0.7.1
