@@ -6,10 +6,12 @@ def insert(data):
     db.session.commit()
 
 
+def merge(data):
+    db.session.merge(data)
+    db.session.commit()
+
+
 def delete(data):
     db.session.delete(data)
     db.session.commit()
 
-
-def commit():
-    db.session.commit()
